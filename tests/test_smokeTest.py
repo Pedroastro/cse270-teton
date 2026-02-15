@@ -76,5 +76,6 @@ class TestSmokeTest():
     self.driver.find_element(By.ID, "password").click()
     self.driver.find_element(By.ID, "password").send_keys("test")
     self.driver.find_element(By.CSS_SELECTOR, ".mysubmit:nth-child(4)").click()
+    WebDriverWait(self.driver, 30).until(expected_conditions.text_to_be_present_in_element((By.CSS_SELECTOR, ".errorMessage"), "Invalid username and password."))
     assert self.driver.find_element(By.CSS_SELECTOR, ".errorMessage").text == "Invalid username and password."
   
